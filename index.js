@@ -15,20 +15,21 @@ bg2.src =
   "images/high-quality-horizontal-background-cityscape-260nw-1055260328.jpg";
 
 let player = new Image();
-player.src = "./images/Lucky.png";
+player.src =
+  "./images/176-1769151_660-x-1650-13-bike-icon-top-view__1_-removebg-preview.png";
 
 //Declaring variables:
+let startBtn = document.querySelector("#startBtn");
+let restartBtn = document.querySelector("#restart");
 let intervalId = 0;
 let isGameOver = false;
 let playerY = 610,
-  playerX = 180;
+  playerX = 280;
+// let intervalId = 0;
 
 function draw() {
   // ctx.drawImage(bg2, 0, 0);
-  ctx.drawImage(player, playerX, playerY, 55, 55);
   // ctx.drawImage(bg1, 265, 0);
-  canvas.style.display = "block";
-
   ctx.beginPath();
   ctx.stroke();
   ctx.lineWidth = 10;
@@ -44,21 +45,38 @@ function draw() {
   ctx.closePath();
 
   ctx.beginPath();
-  ctx.stroke();
+  // ctx.stroke();
   ctx.lineWidth = 10;
-  ctx.shadowBlur = 1;
-  // ctx.fillStyle = gray;
-  ctx.fillRect(280, 80, 100, 580);
+  // ctx.shadowBlur = 1;
+  ctx.fillStyle = "rgba(67, 63, 63, 0.5)";
+  ctx.fillRect(280, 80, 100, 640);
   ctx.closePath();
+
+  ctx.drawImage(player, playerX, playerY, 55, 55);
+}
+
+function handleStart() {
+  canvas.style.display = "block";
+  animation();
 }
 
 function animation() {
-  draw();
+  setInterval(() => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    draw();
+    playerY = playerY - 5;
+  }, 200);
   // playerX = playerX - 5;
-  playerY = playerY + 5;
-  console.log("are we here too?");
+  // console.log("are we here too?");
 }
 
 window.addEventListener("load", () => {
-  animation();
+  canvas.style.display = "none";
+
+  startBtn.addEventListener("click", () => {
+    handleStart();
+  });
+
+  document.addEventListener("keydown", (event) => {});
 });
