@@ -1,0 +1,21 @@
+:root {
+  font-size: 0.625em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.6rem;
+  margin: auto;
+  max-width: 60rem;
+  color: #d8edea;
+  background: radial-gradient(
+    circle,
+    rgba(175, 196, 174, 1) 0%,
+    rgba(104, 204, 191, 1) 89%,
+    rgba(94, 191, 178, 1) 100%
+  );
+}
