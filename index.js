@@ -49,6 +49,8 @@ let car1X = -50,
 let car2X = 605,
   car2Y = 310;
 
+let playerRight = false;
+
 function draw() {
   ctx.beginPath();
   ctx.shadowBlur = 0;
@@ -108,7 +110,13 @@ function draw() {
   ctx.fillRect(280, 80, 100, 640);
   ctx.closePath();
 
-  ctx.drawImage(player, playerX, playerY, 55, 55);
+  if(playerRight) {
+    ctx.drawImage(rPlayer, playerX, playerY, 55, 55);
+  } else {
+    ctx.drawImage(player, playerX, playerY, 55, 55);
+  }
+
+  // ctx.drawImage(player, playerX, playerY, 55, 55);
   // ctx.drawImage(rPlayer, 610, 280, 55, 55);
 }
 
@@ -123,14 +131,14 @@ function showGameOver() {
   canvas.style.display = "none";
 }
 
-function drawRotated(degree) {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.save();
-  ctx.translate(canvas.width / 2, canvas.height / 2);
-  ctx.rotate((degree * Math.PI) / 180);
-  ctx.drawImage(player, -player.width / 2, -player.width / 2, 55, 55);
-  ctx.restore();
-}
+// function drawRotated(degree) {
+//   ctx.clearRect(0, 0, canvas.width, canvas.height);
+//   ctx.save();
+//   ctx.translate(canvas.width / 2, canvas.height / 2);
+//   ctx.rotate((degree * Math.PI) / 180);
+//   ctx.drawImage(player, -player.width / 2, -player.width / 2, 55, 55);
+//   ctx.restore();
+// }
 
 function animation() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -146,10 +154,10 @@ function animation() {
   if (isLeft) {
     playerX = playerX - 1;
   }
-  if (isRotate) {
-    // player = rPlayer;
-    drawRotated(90);
-  }
+  // if (isRotate) {
+  //   // player = rPlayer;
+  //   // drawRotated(90);
+  // }
 
   ctx.font = "24px Verdana";
   ctx.fillText(`Score: ${score}`, 230, 40);
@@ -188,7 +196,7 @@ window.addEventListener("load", () => {
 
   document.addEventListener("keypress", (event) => {
     if (event.key == "r") {
-      return (isRotate = true);
+      playerRight = true
     }
   });
 });
