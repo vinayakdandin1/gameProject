@@ -43,5 +43,8 @@ h1 {
 }
 
 #startElems > div > img {
-  width: 75px;
+  width: 100px;
+}
+#startElems > div > img hoover {
+  width: 200px;
 }
